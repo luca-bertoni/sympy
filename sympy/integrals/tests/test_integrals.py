@@ -2160,3 +2160,12 @@ def test_integral_issue_26566():
 
     # Assert that the symbolic result matches the correct value
     assert simplify(numeric_symbolic_result - numeric_correct_result) == 0
+
+
+def test_integral_issue_27231():
+    # https://github.com/sympy/sympy/issues/27231
+    i = Integral(sqrt(1 - 0.5625*(x + 0.333333333333333)**2),(x,-1,1))
+    assert nsimplify(i).doit()==(sqrt(3)/6 + 4*pi/9)
+   
+    
+    
